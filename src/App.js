@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { guid } from './utils';
 import { connect } from "react-redux";
 import { ADD_COUNTER, CHANGE_INPUT, ADD_NEW_ITEM } from './actions/constants';
+import { ChangeNameInput, Counter, ListOf } from './components';
 
 const mapStateToProps = state => {  
   return {     
@@ -28,32 +29,20 @@ function App(props) {
   }  
   return (
     <>
-      <div>
-        {value}
-      </div>
-      <div>
-          <input value={input} onChange={e => setInput(e.target.value)} />
-          <button onClick={handleChangeInput}>Alterar Nome</button>
-      </div>      
-      <div>
-        {counter}
-      </div>
-      <div>
-        <button onClick={handleClickSum}>Acrescenter</button>
-      </div>
-      <div>
-        <ul>
-          {list.map((l, i) => (
-            <li key={i}>{l}</li>
-          ))}
-        </ul>
-        <div>
-          <button onClick={handleClickNewItem}>Novo Item</button>
-        </div>
-      </div>
-      <div>
-        <pre>{JSON.stringify(props)}</pre>
-      </div>
+      <ChangeNameInput 
+        value={value} 
+        input={input} 
+        onChangeInput={e => setInput(e.target.value)} 
+        onClickButton={handleChangeInput}
+      />
+      <Counter 
+        counter={counter} 
+        onClickButton={handleClickSum} 
+      />
+      <ListOf 
+        lists={list}
+        onClickButton={handleClickNewItem}
+      />
     </>
   );
 }

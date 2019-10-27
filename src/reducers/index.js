@@ -1,4 +1,8 @@
-import { ADD_COUNTER, CHANGE_INPUT, ADD_NEW_ITEM } from '../actions/constants';
+import { 
+    ADD_COUNTER, 
+    CHANGE_INPUT, 
+    ADD_NEW_ITEM 
+} from '../actions/constants';
 
 const initialState = {
     counter: 0, 
@@ -7,7 +11,7 @@ const initialState = {
 }
 
 function rootReducer(state = initialState, action) {   
-    switch(action.type){
+    switch(action.type) {
         case ADD_COUNTER: {
             state = {...state, counter: action.payload.counter };
             break;
@@ -19,7 +23,10 @@ function rootReducer(state = initialState, action) {
         case CHANGE_INPUT: { 
             state = {...state, value: action.payload.value };
             break;
-        }        
+        }    
+        default: {
+            break;
+        }    
     }     
     return state;
 }
